@@ -7,4 +7,5 @@
     - STATIC_ROOT (chemin du dossier où y'a les statics) --> os.path.join(BASE_DIR, 'static_collect')
     - STATICFILE_DIR = [os.path.join(BASE_DIR, library/static)]
     - Tag pour appeler dans les templates : {% static 'logo.png' %} avec en haut {% load static %}
-    - il faut aussi faire un ./manage.py collectstatic
+    - Il faut aussi faire un ./manage.py collectstatic
+    - Et mettre todolist en premier dans INSTALLED_APP
