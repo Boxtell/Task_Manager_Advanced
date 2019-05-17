@@ -1,0 +1,32 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+</head>
+
+<body>
+    {% if object_list %}
+    <h2>Available lists :</h2>
+
+            {% for list in object_list %}
+                <p style="font-size: 1vw">
+                    {{ list }}
+                    <a href="{% url 'todolist:list-detail' pk=list.pk %}" style="font-size: 0.5vw"> Open</a>
+                </p>
+
+            {% endfor %}
+
+
+    {% else %}
+        <p>
+            Nothing planed.
+        </p>
+    {% endif %}
+
+</body>
+
+{% endblock %}

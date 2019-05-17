@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+</head>
+
+<body>
+    {% if tasks %}
+    <h2>Tasks list :</h2>
+
+        <form method="get">
+            {% csrf_token %}
+            {% bootstrap_form form layout='inline' %}
+            <input type="submit" value="Search">
+            <input type="reset" value="Clear">
+        </form>
+
+        <br>
+
+            {% for task in tasks %}
+                <p style="font-size: 2vw">
+                    {{ task }}
+                    <a href="{% url 'todolist:go_to_description' pk=task.pk %}" style="font-size: 1vw"> show</a>
+                </p>
+            {% endfor %}
+
+
+    {% else %}
+        <p style="font-size: 2vw">Nothing planed ...</p>
+    <a href="{% url 'todolist:task_list' %}">Go back</a>
+    {% endif %}
+
+</body>
+
+{% endblock %}

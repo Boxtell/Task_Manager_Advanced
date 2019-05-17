@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ object.list_title }}</title>
+</head>
+
+    <h2>{{ object.list_title }}</h2>
+
+    <ul>
+        {% for obj in object.tasks.all %}
+            {{ obj }}
+            <a href="{% url 'todolist:go_to_description' pk=obj.pk %}">Show</a>
+        <br>
+        {% endfor %}
+    </ul>
+
+    <dt>
+        User(s) :
+        <br>
+        {% for user in object.list_users.all %}
+            {{ user }}
+        <br>
+        {% endfor %}
+    </dt>
+
+    <a class="btn btn-primary" href="{% url 'todolist:list-edit' pk=object.pk %}"> Update List </a>
+    <a class="btn btn-primary" href="{% url 'todolist:list-delete' pk=object.pk %}"> Delete List </a>
+
+{% endblock %}
